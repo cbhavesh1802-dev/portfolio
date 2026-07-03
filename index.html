@@ -62,53 +62,28 @@
   }
   .nav-logo {
     font-family: var(--font-mono);
-    font-size: 15px;
-    color: var(--gold);
-    letter-spacing: 0.5px;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
     cursor: pointer;
   }
-  .logo-3d-wrap {
-    width: 34px;
-    height: 34px;
-    perspective: 300px;
-  }
-  .logo-3d {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: logoSpin 8s linear infinite;
-  }
-  .logo-face {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-mono);
-    font-size: 10px;
+  .logo-mark {
+    font-size: 19px;
     font-weight: 700;
-    letter-spacing: 0.5px;
-    border-radius: 6px;
-    backface-visibility: hidden;
+    letter-spacing: 1px;
+    color: var(--gold);
+    transform: perspective(300px) rotateX(10deg) rotateY(-14deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    text-shadow:
+      1px 1px 0 #c68a35,
+      2px 2px 0 #a97427,
+      3px 3px 0 #8c5f1c,
+      4px 4px 0 #704a12,
+      5px 5px 8px rgba(0,0,0,0.4);
   }
-  .logo-face-front {
-    background: linear-gradient(145deg, var(--gold), #b9791f);
-    color: var(--ink);
-    transform: translateZ(17px);
-  }
-  .logo-face-back {
-    background: linear-gradient(145deg, var(--teal), #1f8f80);
-    color: var(--ink);
-    transform: rotateY(180deg) translateZ(17px);
-  }
-  @keyframes logoSpin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(360deg); }
+  .nav-logo:hover .logo-mark {
+    transform: perspective(300px) rotateX(4deg) rotateY(-6deg);
   }
   .nav-links {
     display: flex;
@@ -579,12 +554,7 @@
 <nav>
   <div class="nav-inner">
     <a href="#hero-top" class="nav-logo">
-      <span class="logo-3d-wrap">
-        <span class="logo-3d">
-          <span class="logo-face logo-face-front">BMC</span>
-          <span class="logo-face logo-face-back">BMC</span>
-        </span>
-      </span>
+      <span class="logo-mark">BMC</span>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
