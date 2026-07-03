@@ -75,6 +75,7 @@
     color: var(--muted);
   }
   .nav-links a:hover { color: var(--teal); }
+  .nav-links a.active { color: var(--teal); }
   .nav-toggle { display: none; }
 
   /* ---------- HERO ---------- */
@@ -943,6 +944,21 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
   });
 });
+
+// ---------- SCROLL SPY: HIGHLIGHT ACTIVE NAV LINK ----------
+const spySections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const spyObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('id');
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+spySections.forEach((section) => spyObserver.observe(section));
 
 </script>
 
